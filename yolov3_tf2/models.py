@@ -1,5 +1,6 @@
 from absl import flags
 from absl.flags import FLAGS
+import sys
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras import Model
@@ -26,7 +27,7 @@ flags.DEFINE_integer('yolo_max_boxes', 100,
                      'maximum number of boxes per image')
 flags.DEFINE_float('yolo_iou_threshold', 0.1, 'iou threshold')
 flags.DEFINE_float('yolo_score_threshold', 0.1, 'score threshold')
-
+FLAGS(sys.argv)
 yolo_anchors = np.array([(10, 13), (16, 30), (33, 23), (30, 61), (62, 45),
                          (59, 119), (116, 90), (156, 198), (373, 326)],
                         np.float32) / 416
